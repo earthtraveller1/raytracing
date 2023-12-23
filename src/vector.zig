@@ -54,4 +54,4 @@ pub const Vec3 = struct {
     }
 };
 
-const Point3 = Vec3;
+pub const Point3 = Vec3;
