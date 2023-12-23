@@ -1,6 +1,9 @@
 const std = @import("std");
 const raylib = @cImport(@cInclude("raylib.h"));
 
+const color_file = @import("color.zig");
+const Color = color_file.Color;
+
 const image_width = 1280;
 const image_height = 720;
 
@@ -18,17 +21,13 @@ pub fn main() !void {
             const y_f: f64 = @floatFromInt(y);
             const x_f: f64 = @floatFromInt(x);
 
-            const red: f64 = y_f / image_height_f;
-            const green: f64 = x_f / image_width_f;
-
-            const color = raylib.Color{
-                .r = @intFromFloat(red * 255.99),
-                .g = @intFromFloat(green * 255.99),
-                .b = 255,
-                .a = 255,
+            const color = Color{
+                .x = x_f / (image_width_f - 1),
+                .y = y_f / (image_height_f - 1),
+                .z = 0.0,
             };
 
-            try canvas.append(color);
+            try canvas.append(color_file.to_raylib_color(&color));
         }
     }
 
