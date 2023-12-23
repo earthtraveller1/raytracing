@@ -1,6 +1,6 @@
 const Vec3 = @import("vector.zig").Vec3;
 const raylib = @cImport(@cInclude("raylib.h"));
-const Color = Vec3;
+pub const Color = Vec3;
 
 pub fn to_raylib_color(color: *const Color) raylib.Color {
     return .{
