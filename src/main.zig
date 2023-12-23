@@ -1,8 +1,8 @@
 const std = @import("std");
 const raylib = @cImport(@cInclude("raylib.h"));
 
-const image_width = 800;
-const image_height = 600;
+const image_width = 1280;
+const image_height = 720;
 
 pub fn main() !void {
     raylib.InitWindow(image_width, image_height, "Hello, World!");
