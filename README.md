@@ -1,6 +1,6 @@
 # Ray Tracing
 
-A port of the Ray Tracing in a Weekend tutorials into Zig.
+Me following the Ray Tracing in a Weekend tutorial in Zig.
 
 ## Quick Start
 
