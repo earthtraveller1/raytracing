@@ -4,8 +4,18 @@ const raylib = @cImport(@cInclude("raylib.h"));
 const color_file = @import("color.zig");
 const Color = color_file.Color;
 
+const preferred_aspect_ratio: f64 = 16.0 / 9.0;
+
 const image_width = 1280;
-const image_height = 720;
+const image_height: comptime_int = @intFromFloat(image_width / preferred_aspect_ratio);
+
+const image_width_f: comptime_float = @floatFromInt(image_width);
+const image_height_f: comptime_float = @floatFromInt(image_height);
+
+const actual_aspect_ratio = image_width_f / image_height_f;
+
+const viewport_height = 2.0;
+const viewport_width = viewport_height * actual_aspect_ratio;
 
 pub fn main() !void {
     raylib.InitWindow(image_width, image_height, "Hello, World!");
@@ -16,8 +26,6 @@ pub fn main() !void {
     while (y < image_height) : (y += 1) {
         var x: u32 = 0;
         while (x < image_width) : (x += 1) {
-            const image_height_f: f64 = @floatFromInt(image_height);
-            const image_width_f: f64 = @floatFromInt(image_width);
             const y_f: f64 = @floatFromInt(y);
             const x_f: f64 = @floatFromInt(x);
 
