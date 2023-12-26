@@ -13,6 +13,14 @@ pub const Vec3 = struct {
         };
     }
 
+    pub fn sub(self: *const Vec3, other: *const Vec3) Vec3 {
+        return Vec3{
+            self.x - other.x,
+            self.y - other.y,
+            self.z - other.z,
+        };
+    }
+
     pub fn multiply(self: *const Vec3, scalar: f64) Vec3 {
         return Vec3{
             self.x * scalar,
